@@ -23,13 +23,13 @@
 		</div>
 
 		<div class="result" v-if="formSubmitted">
-			<h2>Estas são as melhores alternativas de frete para você.</h2>
+			<h3>Estas são as melhores alternativas de frete para você.</h3>
 			<div v-if="weight" class="frete">
 				<b-icon icon="cash-coin" class="frete--icon" scale="5"></b-icon>
 				<div class="frete--dados">
 					<h3>Frete com menor valor</h3>
 					<p>Transportadora: {{ precoPorPeso.opcaoMenorPreco.name }}</p>
-					<p>Tempo de entrega: {{ precoPorPeso.opcaoMenorPreco.lead_time }}</p>
+					<p>Tempo estimado: {{ precoPorPeso.opcaoMenorPreco.lead_time }}</p>
 				</div>
 				<div class="frete--preco">
 					<h3>Preço</h3>
@@ -50,6 +50,11 @@
 			</div>
 			<div class="col-md-10 botao">
 				<b-button class="botao--alt" type="submit" @click="resetForm">Limpar</b-button>
+			</div>
+		</div>
+		<div v-else class="result">
+			<div class="message">
+				<h3>Nenhum dado selecionado.</h3>
 			</div>
 		</div>
 	</div>
@@ -90,7 +95,8 @@ export default {
 					const option = this.filteredOptions[i]
 					const menorLead = parseInt(menorLeadTimeOption.lead_time.replace("h", ""))
 					const optionLead = parseInt(option.lead_time.replace("h", ""))
-					if (menorLead > optionLead) {
+					console.log(menorLead, optionLead)
+					if (menorLead >= optionLead) {
 						menorLeadTimeOption = this.filteredOptions[i]
 						const costTransport =
 							peso <= 100
@@ -113,7 +119,7 @@ export default {
 				const peso = parseFloat(this.weight)
 				let menorPreco = Infinity
 				let opcaoMenorPreco = null
-
+				//itera pelo tamanho da lista de opcoes e retorna o de menor custo
 				for (let i = 0; i < this.filteredOptions.length; i++) {
 					const costTransport =
 						peso <= 100
@@ -125,7 +131,6 @@ export default {
 						opcaoMenorPreco = this.filteredOptions[i]
 					}
 				}
-				console.log(opcaoMenorPreco)
 
 				return {
 					opcaoMenorPreco: opcaoMenorPreco,
@@ -161,6 +166,12 @@ export default {
 </script>
 
 <style scoped>
+* {
+	font-family: sans-serif;
+}
+p {
+	margin: 0;
+}
 .title {
 	font-size: 2rem;
 }
@@ -197,8 +208,15 @@ export default {
 }
 
 .result {
+	width: 100%;
 	margin: 0.625rem 2rem 2rem 0;
 	padding-left: 2rem;
+}
+.message {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
 }
 
 .frete {
@@ -207,6 +225,7 @@ export default {
 	background-color: #e1e1e1;
 	margin-top: 15px;
 	border-radius: 10px;
+	padding: 15px;
 }
 .frete--icon {
 	height: auto;
