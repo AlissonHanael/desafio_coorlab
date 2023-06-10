@@ -1,30 +1,24 @@
 <template>
-  <div id="app" class="app">
-    <HeaderTransport />
-    <BestTransport/> 
-    
-  </div>
+	<div id="app">
+		<HeaderTransport />
+		<BestTransport />
+		<ContentBox />
+	</div>
 </template>
 
 <script>
-import HeaderTransport from './components/HeaderTransport.vue'
-import BestTransport from './components/BestTransport.vue'
-
+import HeaderTransport from "./components/HeaderTransport.vue"
+import BestTransport from "./components/BestTransport.vue"
+import ContentBox from "./components/ContentBox.vue"
 
 export default {
-  name: 'App',
-  components: {
-    HeaderTransport,
-    BestTransport,
-    
-
-  }
+	name: "App",
+	components: {
+		HeaderTransport,
+		BestTransport,
+		ContentBox,
+	},
 }
 </script>
 
-<style>
- .app{
-  background-color: gray;
-  height: 100vh;
- }
-</style>
+<style></style>

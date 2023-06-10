@@ -1,18 +1,13 @@
 <template>
-  <div>
-    <b-navbar toggleable="lg" type="dark" variant="info">
-      <b-navbar-brand class="ml-2 p-4">
-      </b-navbar-brand>
-    </b-navbar>
-  </div>
+	<div>
+		<b-navbar class="nav" toggleable="lg" type="dark">
+			<b-navbar-brand class="ml-2 p-4"> </b-navbar-brand>
+		</b-navbar>
+	</div>
 </template>
 
-<script>
-  export default {
-    
-  }
-</script>
-
 <style scoped>
-
+.nav {
+	background-color: #4d5061;
+}
 </style>
