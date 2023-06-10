@@ -1,19 +1,24 @@
 <template>
-  <div id="app">
-    <BestTransport/>
-  </div>
+	<div id="app">
+		<HeaderTransport />
+		<BestTransport />
+		<ContentBox />
+	</div>
 </template>
 
 <script>
-import BestTransport from './components/BestTransport.vue'
+import HeaderTransport from "./components/HeaderTransport.vue"
+import BestTransport from "./components/BestTransport.vue"
+import ContentBox from "./components/ContentBox.vue"
 
 export default {
-  name: 'App',
-  components: {
-    BestTransport
-  }
+	name: "App",
+	components: {
+		HeaderTransport,
+		BestTransport,
+		ContentBox,
+	},
 }
 </script>
 
-<style>
-</style>
+<style></style>
